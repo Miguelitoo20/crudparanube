@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Usuarios</title>
+    <!-- Estilos de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Usuarios</h1>
+        <form action="/users" method="POST" class="mb-4">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        </form>
+        <hr>
+        <h2 class="mb-4">Lista de Usuarios</h2>
+        <ul class="list-group">
+            <% users.forEach((user) => { %>
+            <li class="list-group-item">
+                <%= user.name %> (<%= user.email %>)
+                <a href="/users/edit/<%= user._id %>" class="btn btn-sm btn-info ml-2">Editar</a>
+                <a href="/users/delete/<%= user._id %>" class="btn btn-sm btn-danger ml-2">Eliminar</a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
+
